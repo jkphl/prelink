@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jkphl/prelink Test</title>
+        <script>
+            function confirmArea(area) {
+                document.getElementById(area).classList.add('ok');
+            }
+
+            function enableCss(link, area) {
+                link.onload = null;
+                link.rel = 'stylesheet';
+                link.media = 'all';
+                confirmArea(area);
+            }
+
+            function enableJs(area) {
+                document.getElementById(area).style.backgroundColor = 'orange';
+                confirmArea(area);
+            }
+        </script>
+        <link rel="prefetch" href="prefetch.css" as="style" onload="enableCss(this, 'prefetch-css')"/>
+        <link rel="preload" href="preload.css" as="style" onload="enableCss(this, 'preload-css')"/>
+        <link rel="prefetch" href="prefetch.js" as="script" onload="enableJs('prefetch-js')"/>
+        <link rel="preload" href="preload.js" as="script" onload="enableJs('preload-js')"/>
+        <script src="prelink.js"></script>
+        <style>
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            p {
+                margin: 0;
+                width: 50%;
+                text-align: center;
+                background-color: red;
+                color: white;
+                display: flex;
+                align-items: center;
+            }
+
+            p.ok {
+                background-color: green !important;
+            }
+
+            code {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="prefetch-css"><code>&lt;link rel="prefetch" href="prefetch.css" as="style"/></code></p>
+        <p id="preload-css"><code>&lt;link rel="preload" href="preload.css" as="style"/></code></p>
+        <p id="prefetch-js"><code>&lt;link rel="prefetch" href="prefetch.js" as="script"/></code></p>
+        <p id="preload-js"><code>&lt;link rel="preload" href="preload.js" as="script"/></code></p>
+    </body>
+</html>

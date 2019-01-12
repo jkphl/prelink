@@ -1,0 +1,40 @@
+{
+  "name": "prelink",
+  "version": "0.1.0",
+  "description": "General purpose polyfill for preloading & prefetching <link> elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "gulp && node node_modules/http-server/bin/http-server ./build",
+    "build": "gulp",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//jkphl/prelink.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "link",
+    "preload",
+    "prefetch"
+  ],
+  "author": "Joschi Kuphal <joschi@kuphal.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-typescript": "^5.0.0",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1",
+    "http-server": "^0.11.1",
+    "typescript": "^3.2.2",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "^7.12.3"
+  }
+}
