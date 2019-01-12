@@ -54,7 +54,7 @@ no-new-func: ["off"] */
     };
 
     // Find all <link> elements in the document
-    const links = [].slice.apply(w.document.getElementsByTagName('link'));
+    const links = w.document.getElementsByTagName('link');
 
     // Register link directives to enable automatically
     const autoEnable = { preload: true };
@@ -160,14 +160,14 @@ no-new-func: ["off"] */
             return false;
         }
     }
-
+    
     /**
      * Polyfill a particular rel type
      *
      * @param {String} rel Rel type
      */
     function polyfill(rel) {
-        links.filter(link => link.rel === rel && !link.getAttribute('data-prelink'))
+        [].slice.apply(links).filter(link => link.rel === rel && !link.getAttribute('data-prelink'))
             .forEach((link) => {
                 link.setAttribute('data-prelink', true);
                 const resourceType = (link.getAttribute('as') || 'undefined').toLowerCase();

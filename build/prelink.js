@@ -48,7 +48,7 @@ no-new-func: ["off"] */
         preload: false
     };
     // Find all <link> elements in the document
-    var links = [].slice.apply(w.document.getElementsByTagName('link'));
+    var links = w.document.getElementsByTagName('link');
     // Register link directives to enable automatically
     var autoEnable = { preload: true };
     // Define loaders for link resource types
@@ -150,7 +150,7 @@ no-new-func: ["off"] */
      * @param {String} rel Rel type
      */
     function polyfill(rel) {
-        links.filter(function (link) { return link.rel === rel && !link.getAttribute('data-prelink'); })
+        [].slice.apply(links).filter(function (link) { return link.rel === rel && !link.getAttribute('data-prelink'); })
             .forEach(function (link) {
             link.setAttribute('data-prelink', true);
             var resourceType = (link.getAttribute('as') || 'undefined').toLowerCase();
